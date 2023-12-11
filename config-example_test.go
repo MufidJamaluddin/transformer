@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/sugarme/transformer"
-	"github.com/sugarme/transformer/bert"
+	"github.com/MufidJamaluddin/transformer"
+	"github.com/MufidJamaluddin/transformer/bert"
 )
 
 func ExampleLoadConfig() {

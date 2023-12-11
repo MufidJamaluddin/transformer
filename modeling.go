@@ -1,8 +1,8 @@
 package transformer
 
 import (
+	"github.com/MufidJamaluddin/transformer/pretrained"
 	"github.com/sugarme/gotch"
-	"github.com/sugarme/transformer/pretrained"
 )
 
 // LoadConfig loads pretrained model data from local or remote file.
@@ -10,9 +10,10 @@ import (
 // Parameters:
 // - `model` pretrained Model (any model type that implements pretrained `Model` interface)
 // - `modelNameOrPath` is a string of either
-//		+ Model name or
-// 		+ File name or path or
-// 		+ URL to remote file
+//   - Model name or
+//   - File name or path or
+//   - URL to remote file
+//
 // If `modelNameOrPath` is resolved, function will cache data using `TransformerCache`
 // environment if existing, otherwise it will be cached in `$HOME/.cache/transformers/` directory.
 // If `modleNameOrPath` is valid URL, file will be downloaded and cached.

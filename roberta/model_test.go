@@ -6,6 +6,9 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/MufidJamaluddin/transformer/bert"
+	"github.com/MufidJamaluddin/transformer/roberta"
+	"github.com/MufidJamaluddin/transformer/util"
 	"github.com/sugarme/gotch"
 	"github.com/sugarme/gotch/nn"
 	"github.com/sugarme/gotch/pickle"
@@ -15,9 +18,6 @@ import (
 	"github.com/sugarme/tokenizer/normalizer"
 	"github.com/sugarme/tokenizer/pretokenizer"
 	"github.com/sugarme/tokenizer/processor"
-	"github.com/sugarme/transformer/bert"
-	"github.com/sugarme/transformer/roberta"
-	"github.com/sugarme/transformer/util"
 )
 
 func getRobertaTokenizer(vocabFile string, mergeFile string) (retVal *tokenizer.Tokenizer) {
@@ -127,14 +127,14 @@ func TestRobertaForMaskedLM(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
@@ -230,14 +230,14 @@ func TestRobertaForSequenceClassification(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
@@ -332,14 +332,14 @@ func TestRobertaForMultipleChoice(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true).MustUnsqueeze(0, true)
@@ -441,14 +441,14 @@ func TestRobertaForTokenClassification(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
@@ -551,14 +551,14 @@ func TestRobertaForQuestionAnswering(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)

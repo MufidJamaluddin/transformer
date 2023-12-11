@@ -9,7 +9,7 @@ import (
 	"github.com/sugarme/gotch/nn"
 	"github.com/sugarme/gotch/ts"
 
-	"github.com/sugarme/transformer/util"
+	"github.com/MufidJamaluddin/transformer/util"
 )
 
 // BertSelfAttention:

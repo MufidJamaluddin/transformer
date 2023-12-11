@@ -26,5 +26,5 @@ before_install:
   - mv libtch/lib.go.cpu libtch/lib.go
 script:
   - go get -u ./...
-  - go test -v github.com/sugarme/transformer
-  - go test -v github.com/sugarme/transformer/bert
+  - go test -v github.com/MufidJamaluddin/transformer
+  - go test -v github.com/MufidJamaluddin/transformer/bert

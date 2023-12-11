@@ -13,8 +13,8 @@ import (
 	"github.com/sugarme/tokenizer/normalizer"
 	"github.com/sugarme/tokenizer/pretokenizer"
 	"github.com/sugarme/tokenizer/processor"
-	"github.com/sugarme/transformer/bert"
-	"github.com/sugarme/transformer/util"
+	"github.com/MufidJamaluddin/transformer/bert"
+	"github.com/MufidJamaluddin/transformer/util"
 )
 
 func main() {

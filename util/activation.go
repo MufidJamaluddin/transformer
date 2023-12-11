@@ -46,7 +46,7 @@ func NewGelu() GeluActivation {
 }
 
 func (g GeluActivation) Fwd(x *ts.Tensor) (retVal *ts.Tensor) {
-	return x.MustGelu(false)
+	return x.MustGelu("none", false)
 }
 
 func (g GeluActivation) Name() (retVal string) {

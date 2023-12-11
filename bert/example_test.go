@@ -10,8 +10,8 @@ import (
 	"github.com/sugarme/gotch/ts"
 	"github.com/sugarme/tokenizer"
 
-	"github.com/sugarme/transformer/bert"
-	"github.com/sugarme/transformer/util"
+	"github.com/MufidJamaluddin/transformer/bert"
+	"github.com/MufidJamaluddin/transformer/util"
 )
 
 func ExampleBertForMaskedLM() {
@@ -65,14 +65,14 @@ func ExampleBertForMaskedLM() {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)

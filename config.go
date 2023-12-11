@@ -1,8 +1,8 @@
 package transformer
 
 import (
-	"github.com/sugarme/transformer/pretrained"
-	"github.com/sugarme/transformer/util"
+	"github.com/MufidJamaluddin/transformer/pretrained"
+	"github.com/MufidJamaluddin/transformer/util"
 )
 
 // LoadConfig loads pretrained configuration data from local or remote file.

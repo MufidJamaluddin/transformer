@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/sugarme/transformer/bert"
+	"github.com/MufidJamaluddin/transformer/bert"
 )
 
 func TestBertTokenizer(t *testing.T) {

@@ -9,7 +9,7 @@ import (
 	"github.com/sugarme/tokenizer/pretokenizer"
 	"github.com/sugarme/tokenizer/processor"
 
-	"github.com/sugarme/transformer/util"
+	"github.com/MufidJamaluddin/transformer/util"
 )
 
 // Tokenizer holds data for Roberta tokenizer.

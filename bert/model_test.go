@@ -16,8 +16,8 @@ import (
 	"github.com/sugarme/tokenizer/pretokenizer"
 	"github.com/sugarme/tokenizer/processor"
 
-	"github.com/sugarme/transformer/bert"
-	"github.com/sugarme/transformer/util"
+	"github.com/MufidJamaluddin/transformer/bert"
+	"github.com/MufidJamaluddin/transformer/util"
 )
 
 func getBertTokenizer(vocabFile string) (retVal *tokenizer.Tokenizer) {
@@ -110,14 +110,14 @@ func TestBertForMaskedLM(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
@@ -198,14 +198,14 @@ func TestBertForSequenceClassification(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
@@ -279,14 +279,14 @@ func TestBertForMultipleChoice(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true).MustUnsqueeze(0, true)
@@ -367,14 +367,14 @@ func TestBertForTokenClassification(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
@@ -448,14 +448,14 @@ func TestBertForQuestionAnswering(t *testing.T) {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)

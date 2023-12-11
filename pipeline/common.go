@@ -4,12 +4,12 @@ import (
 	"log"
 	"reflect"
 
+	"github.com/MufidJamaluddin/transformer/bert"
 	"github.com/sugarme/tokenizer"
 	"github.com/sugarme/tokenizer/model/wordpiece"
 	"github.com/sugarme/tokenizer/normalizer"
 	"github.com/sugarme/tokenizer/pretokenizer"
 	"github.com/sugarme/tokenizer/processor"
-	"github.com/sugarme/transformer/bert"
 )
 
 // Common blocks for generic pipelines (e.g. token classification or sequence classification)
@@ -78,7 +78,11 @@ func ConfigOptionFromFile(modelType ModelType, path string) *ConfigOption {
 
 	switch reflect.TypeOf(modelType).Kind().String() {
 	case "Bert":
-		config := bert.ConfigFromFile(path)
+		config, err := bert.ConfigFromFile(path)
+		if err != nil {
+			log.Fatalf("Invalid config file: '%v'\n", err)
+		}
+
 		configOpt = &ConfigOption{
 			model:  Bert,
 			config: config,

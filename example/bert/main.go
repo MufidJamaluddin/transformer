@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/MufidJamaluddin/transformer/bert"
+	"github.com/MufidJamaluddin/transformer/util"
 	"github.com/sugarme/gotch"
 	"github.com/sugarme/gotch/nn"
 	"github.com/sugarme/gotch/pickle"
@@ -13,8 +15,6 @@ import (
 	"github.com/sugarme/tokenizer/normalizer"
 	"github.com/sugarme/tokenizer/pretokenizer"
 	"github.com/sugarme/tokenizer/processor"
-	"github.com/MufidJamaluddin/transformer/bert"
-	"github.com/MufidJamaluddin/transformer/util"
 )
 
 func main() {
@@ -119,14 +119,14 @@ func bertForMaskedLM() {
 		}
 	}
 
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
@@ -197,14 +197,14 @@ func bertForSequenceClassification() {
 	}
 
 	fmt.Printf("encodings: %v\n", encodings)
-	var tensors []ts.Tensor
+	var tensors []*ts.Tensor
 	for _, en := range encodings {
 		var tokInput []int64 = make([]int64, maxLen)
 		for i := 0; i < len(en.Ids); i++ {
 			tokInput[i] = int64(en.Ids[i])
 		}
 
-		tensors = append(tensors, *ts.TensorFrom(tokInput))
+		tensors = append(tensors, ts.TensorFrom(tokInput))
 	}
 
 	inputTensor := ts.MustStack(tensors, 0).MustTo(device, true)
